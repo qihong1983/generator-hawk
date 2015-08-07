@@ -1,0 +1,1 @@
+define("pages/demo/t1",["jquery/jquery/2.1.0/jquery","./qiqi"],function(a){var b=a("jquery/jquery/2.1.0/jquery"),c=a("./qiqi");b("#say").click(function(a){a.preventDefault(),c()})}),define("pages/demo/qiqi",["jquery/jquery/2.1.0/jquery"],function(a,b,c){var d=a("jquery/jquery/2.1.0/jquery");c.exports=function(){d("<p>hello world</p>").appendTo("#console")}});

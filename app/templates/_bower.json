@@ -1,0 +1,20 @@
+{
+  "name": "hawk_bower_test",
+  "version": "0.0.1",
+  "authors": [
+    "qihong <qihongbin@163.com>"
+  ],
+  "description": "kk",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "kk",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	"hawk_bower_test": "",
+	"qihong-test-ll": ""
+  }
+}

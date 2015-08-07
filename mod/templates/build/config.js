@@ -1,0 +1,1 @@
+define("config",[],function(){seajs.config({alias:{},map:[[/^(.*\.(?:css|js))(.*)$/i,"$1?version=timestamp"]]})});

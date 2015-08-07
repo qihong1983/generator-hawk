@@ -1,0 +1,13 @@
+{
+  "name": "hawk_bower_test",
+  "homepage": "https://github.com/qihong1983/abcd_bower_test",
+  "_release": "4402f7ba11",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4402f7ba11d6d45185cad9eb987e18023eb71fae"
+  },
+  "_source": "git://github.com/qihong1983/abcd_bower_test.git",
+  "_target": "*",
+  "_originalSource": "hawk_bower_test"
+}

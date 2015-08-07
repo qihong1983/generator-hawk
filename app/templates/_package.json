@@ -1,0 +1,27 @@
+{
+  "name" : "<%= name %>",
+  "version" : "<%= version %>",
+  "author" : {
+        "name" : "<%= author%>",
+        "email": "<%= email%>"
+    },
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-copy": "0.0.2",
+    "gulp-file-include": "^0.13.5",
+    "gulp-hawk-combo": "",
+    "gulp-hawk-rename": "",
+    "gulp-hawkcss": "",
+    "gulp-hawkjs": "",
+    "gulp-htmlmin": "",
+    "gulp-seajs-combo": "",
+    "gulp-seajs-transport": "^0.3.1",
+    "gulp-uglify": "^1.2.0",
+    "install": "^0.1.8",
+    "npm": "^2.13.2"
+  },
+  "dependencies": {
+    "gulp-file-include": "^0.13.5"
+  },
+  "description": ""
+}

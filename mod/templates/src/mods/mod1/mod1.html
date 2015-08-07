@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="mods/<%= name %>/<%= name %>.css" />
+<script type="text/javascript" src="mods/<%= name %>/<%= name %>.js"></script>
+<div class="<%= name %>">
+	模块1
+</div>
+<script>
+	seajs.use('mods/<%= name %>/<%= name %>', function (<%= name %>) {
+		var M = new <%= name %>();
+
+		M.init();
+	});
+</script>

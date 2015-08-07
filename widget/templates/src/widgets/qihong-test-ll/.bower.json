@@ -1,0 +1,13 @@
+{
+  "name": "qihong-test-ll",
+  "homepage": "https://github.com/qihong1983/qihong-test-ll",
+  "_release": "3a4dc76bbb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "3a4dc76bbb07dc245ebcff4d44d4d150cc1326db"
+  },
+  "_source": "git://github.com/qihong1983/qihong-test-ll.git",
+  "_target": "*",
+  "_originalSource": "qihong-test-ll"
+}

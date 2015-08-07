@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= name %></title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="pages/<%= name %>/<%= name %>.css" />
+
+
+	
+<script type="text/javascript" src="//<%= local_host %>:<%= local_port %>/??/min/common/js/sea/sea.js,min/common/js/jquery-1.8.3.js"></script>
+
+</script>
+
+<script type="text/javascript" src="//<%= local_host %>:<%= local_port %>/min/static/giftCenter/config.js"></script>
+<!-- css:start -->
+<!-- css:end -->
+<!-- js:start -->
+<!-- js:end -->
+</head>
+<body>
+
+	<div class="<%= name %>">
+		页面
+
+				@@include('../../mods/mod1/mod1.html')
+
+				@@include('../../mods/mod2/mod2.html')
+
+
+	</div>
+	<script type="text/javascript" src="pages/<%= name %>/<%= name %>.js"></script>
+	<script>
+		seajs.use('pages/<%= name %>/<%= name %>',function (<%= name %>) {
+			var P = new <%= name %>();
+
+			P.init();
+		});
+
+	</script>
+
+
+</body>
+</html>

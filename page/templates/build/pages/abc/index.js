@@ -1,0 +1,1 @@
+define("pages/abc/index",["jquery/jquery/2.1.0/jquery","./say-hello"],function(a){var b=a("jquery/jquery/2.1.0/jquery"),c=a("./say-hello");b("#say").click(function(a){a.preventDefault(),c()})});

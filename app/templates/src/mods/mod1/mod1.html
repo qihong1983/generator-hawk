@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="mods/mod1/mod1.css" />
+<script type="text/javascript" src="mods/mod1/mod1.js"></script>
+<div class="mod1">
+	模块1
+</div>
+<script>
+	seajs.use('mods/mod1/mod1', function (Mod1) {
+		var M = new Mod1();
+
+		M.init();
+	});
+</script>

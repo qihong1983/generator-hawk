@@ -1,0 +1,9 @@
+{
+	"mock_online_address": "<%= mock_online_address %>",
+	"online_host": "<%= online_host %>",
+	"online_port": "<%= online_port %>",
+	"local_host": "<%= local_host %>",
+	"local_port": "<%= local_port %>",
+	"qa_host": "<%= qa_host %>",
+	"qa_port": "<%= qa_port %>"
+}

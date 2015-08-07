@@ -1,0 +1,14 @@
+<!-- css和js都会被抽离合并参 -->
+
+<link rel="stylesheet" href="mods/mod2/mod2.css" />
+<script type="text/javascript" src="mods/mod2/mod2.js"></script>
+<div class="mod2">
+	模块2
+</div>
+<script>
+	seajs.use('mods/mod2/mod2', function (Mod2) {
+		var M = new Mod2();
+
+		M.init();
+	});
+</script>

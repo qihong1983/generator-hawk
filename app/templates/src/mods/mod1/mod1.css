@@ -1,0 +1,8 @@
+.mod1 {
+	width:200px;
+	height:200px;
+	background-color:green;
+	color:white;
+
+	background-image:url('mods/mod1/imgs/test.png');
+}
