@@ -23,15 +23,18 @@ var ItvGenerator = yeoman.generators.Base.extend({
  
     // Have Yeoman greet the user.
     //this.log(yosay('Welcome to the marvelous Itv generator!'));
-  var defaultGreeting = 
-    chalk.red('\n    _   _____   _     _  ') +
-    chalk.red('\n   | | |_   _| | |   / / ') +
-    chalk.yellow('\n   | |   | |   | |  / / ') +
-    chalk.green('\n   | |   | |   | | / /') +
-    chalk.cyan('\n   | |   | |   | |/ / ') + 
-    chalk.blue('\n   |_|   |_|   |___/ ') + chalk.yellow('     create widget') +  '\n' +
-    chalk.cyan('\n______________________________________________________________________\n\n\n');
-
+var defaultGreeting = 
+  chalk.red(" __                             __") + '\n' +
+  chalk.yellow("/\\ \\                           /\\ \\") + '\n' +
+  chalk.green("\\ \\ \\___      __     __  __  __\\ \\ \\/'\\") + '\n' +
+  chalk.cyan(" \\ \\  _ `\\  /'__`\\  /\\ \\/\\ \\/\\ \\\\ \\ , <") + '\n' +
+  chalk.gray("  \\ \\ \\ \\ \\/\\ \\L\\.\\_\\ \\ \\_/ \\_/ \\\\ \\ \\\\`\\") + '\n' +
+  chalk.white("   \\ \\_\\ \\_\\ \\__/.\\_\\\\ \\___x___/' \\ \\_\\ \\_\\") + '\n' +
+  chalk.blue("    \\\/_/\\/_/\\/__/\\/_/ \\/__//__/    \\/_/\\/_/")+' '+chalk.white('版本:'+this.pkg.version) + '\n\n\n'+
+  chalk.cyan('使用帮助')+' ==> '+chalk.bgRed(chalk.white('yo hawk:help')) +'  ' +chalk.yellow('`(*∩_∩*)′ ')+ '\n\n'+
+  chalk.cyan('取消请按')+' ==> '+chalk.bgRed(chalk.white('ctrl+c '))+' '+ chalk.yellow('…(⊙_⊙;)…') + '\n\n'+
+  chalk.cyan('___________________________________________________________________\n\n') +
+  chalk.green('创建组件：') + '\n\n';
 
     this.log(defaultGreeting);
 

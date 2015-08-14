@@ -9,12 +9,56 @@ var gulp          = require("gulp"),
     htmlmin       = require('gulp-htmlmin'),
     seajsCombo    = require('gulp-seajs-combo'),
     // runSequence = require('gulp-run-sequence'),
-    hawkRename  = require('gulp-hawk-rename');
+    hawkRename  = require('gulp-hawk-rename'),
+    uglify =      require('gulp-uglify'),
+    minifyCss   = require('gulp-minify-css');
+var fs = require('fs');
+var chalk = require('chalk');
+
+
+var csso = require('gulp-csso');
+var imagemin = require('gulp-imagemin');
+var merge = require('merge-stream');
+var spritesmith = require('gulp.spritesmith');
+
+gulp.task('sprite', function () {
+  // Generate our spritesheet
+  var spriteData = gulp.src('./src/common/icon/*.png')
+      .pipe(spritesmith({
+        imgName: './build/common/icon/sprite.png',
+        cssName: './build/common/icon/sprite.css'
+      }));
+
+  // Pipe image stream through image optimizer and onto disk
+  var imgStream = spriteData.img
+    .pipe(imagemin())
+    .pipe(gulp.dest('./'));
+
+  // Pipe CSS stream through CSS optimizer and onto disk
+  var cssStream = spriteData.css
+    //.pipe(csso())
+    .pipe(gulp.dest('./'));
+
+  // Return a merged stream to handle both `end` events
+  return merge(imgStream, cssStream);
+});
+
+var abc=JSON.parse(fs.readFileSync('./abc.json','utf-8'));
+var mock_online_address = abc.mock_online_address;
+var local_host = abc.local_host;
+var local_port = abc.local_port;
+var online_host = abc.online_host;
+
+// gulp.task('compress', function() {
+//   gulp.src('lib/*.js')
+//     .pipe(uglify())
+//     .pipe(gulp.dest('dist'))
+// });
 
 
 //这个是本地开发目录
-gulp.task('dev',['js','css'], function() {
-	gulp.src(['./src/**/*.html'])
+gulp.task('include',['js','css'], function() {
+	return gulp.src(['./src/**/*.html'])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
@@ -27,7 +71,7 @@ gulp.task('dev',['js','css'], function() {
     //.pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./build'));
 
-    hawk_combo.start();
+    
 });
 
 //这个是测试环境
@@ -37,38 +81,35 @@ gulp.task('qa',['js','css'], function() {
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(gulp.dest('./build'))
     .pipe(hawkjs(true))
-    .pipe(gulp.dest('./build'))
     .pipe(hawkcss())
-    .pipe(gulp.dest('./build'))
-    .pipe(hawkRename({"changeName":"statics.baidu.com:8000"}))
-    .pipe(gulp.dest('./build'))
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(hawkRename({"changeName":abc.qa_host+':'+abc.qa_port}))
+    //.pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./build'));
-
-    hawk_combo.start();
+   
+    //hawk_combo.start();
 });
 
 
 //这个是测试环境
-gulp.task('publish',['js','css'], function() {
+gulp.task('publish',['jsmin','cssmin'], function() {
   gulp.src(['./src/**/*.html'])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(gulp.dest('./build'))
+   // .pipe(gulp.dest('./build'))
     .pipe(hawkjs(true))
-    .pipe(gulp.dest('./build'))
+    //.pipe(gulp.dest('./build'))
     .pipe(hawkcss())
-    .pipe(gulp.dest('./build'))
-    .pipe(hawkRename({"changeName":"img1sw.baidu.com"}))
-    .pipe(gulp.dest('./build'))
+    //.pipe(gulp.dest('./build'))
+    .pipe(hawkRename({"changeName":abc.online_host}))
+    //.pipe(gulp.dest('./build'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./build'));
 
-    hawk_combo.start();
+    //hawk_combo.start();
+
 });
 
 
@@ -76,9 +117,14 @@ gulp.task('css', function() {
   return gulp.src('./src/**/*.css')
     .pipe(gulp.dest('./build'));
 
-    // hawk_combo.start();
 });
 
+gulp.task('cssmin', function() {
+  return gulp.src('./src/**/*.css')
+    .pipe(minifyCss())
+    .pipe(gulp.dest('./build'));
+
+});
 
 gulp.task('copy',function (){
   gulp.src('./src/**/*')
@@ -87,19 +133,49 @@ gulp.task('copy',function (){
 
 gulp.task("js",function(){
   return gulp.src(["./src/**/*.js"])
-    .pipe(gulp.dest("./build"))
     .pipe(transport())
-     // .pipe( seajsCombo({ignore : [ 'global', 'common' ,'config' ]}))
-
     .pipe(gulp.dest("./build"));
+});
 
-    console.log(1111111111111111);
+//压缩版js
+gulp.task("jsmin",function(){
+  return gulp.src(["./src/**/*.js"])
+    .pipe(transport())
+    .pipe(uglify())
+    .pipe(gulp.dest("./build"));
+});
 
- 
+gulp.task("dev",["include",'css','sprite'], function () {
 
-     
 
-   
+/**
+ * 服务器开启提示
+ */
+
+ console.log('\n');
+ var mock_online_address_temp = mock_online_address.substr(1,mock_online_address.length);
+ console.log(
+
+    chalk.blue("服务器开始运行 ")+chalk.cyan('复制根目录地址访问：')+chalk.bgRed("http://"+local_host+":"+local_port+mock_online_address)+'\n'+  
+    chalk.blue('combo功能示例^_^：') + chalk.bgRed("http://"+local_host+":"+local_port + '/'+ mock_online_address_temp+'??' + 'pages/page1/page1.js,'+'pages/page2/page2.js')+'\n'+
+    chalk.blue('关闭按：')+chalk.green('ctrl+c\n')+
+    chalk.blue('配置文件在根目录：')+chalk.green('abc.json')+'\n'+
+    chalk.blue('abc.json配置文件：\n')+chalk.green(JSON.stringify({
+        "mock_online_address":mock_online_address ,
+        "online_host": online_host,
+        "online_port": 80,
+        "local_host": local_host,
+        "local_port": local_port,
+        "qa_host": abc.qa_host,
+        "qa_port": abc.qa_port
+    }, null, 4))+'\n'
+ );
+
+    gulp.src(["./build/**/*.js"])
+       // .pipe(uglify())
+        .pipe(gulp.dest("./build"));
+
+        hawk_combo.start();
 });
 
 

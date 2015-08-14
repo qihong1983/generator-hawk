@@ -12,28 +12,52 @@ var ItvGenerator = yeoman.generators.Base.extend({
     this.pkg = require('../package.json');
 
     this.on('end', function () {
-      if (!this.options['skip-install']) {
-        this.installDependencies();
-      }
+      // if (!this.options['skip-install']) {
+      //   this.installDependencies();
+      // }
+        var cb = this.async();
+
+        // this.prompt([
+        //   {
+        //     name   : 'npm_install',
+        //     message: '现在是否要按装gulp所需要的模块?',
+        //     default: 'N/y',
+        //     warning: ''
+        //   }
+        // ], function (props, err) {
+
+        //   if (err) {
+
+        //     return this.emit('error', err);
+        //   }
+
+
+        //   this.npm_install = (/^y/i).test(props.npm_install);
+
+
+        //   if (this.npm_install) {
+        //     this.npmInstall('', {}, function (err) {
+
+        //       if (err) {
+        //         return console.log('\n' + chalk.yellow('please run "sudo npm install"\n'));
+        //       }
+
+        //       console.log(chalk.green('\n\nnpm was installed successful. \n\n'));
+        //     });
+        //   } else {
+        //     console.log(chalk.yellow('\n\nplease run "npm install" or "tnpm install" before grunt\n'));
+        //     console.log(chalk.green('\ndone!\n'));
+        //   }
+        // //  cb();
+        // }.bind(this));
+
+
+
     });
   },
 
   askFor: function () {
     var done = this.async();
- 
-    // Have Yeoman greet the user.
-    //this.log(yosay('Welcome to the marvelous Itv generator!'));
-  // var defaultGreeting = 
-  //   chalk.red('\n    _   _____   _     _  ') +
-  //   chalk.red('\n   | | |_   _| | |   / / ') +
-  //   chalk.yellow('\n   | |   | |   | |  / / ') +
-  //   chalk.green('\n   | |   | |   | | / /') +
-  //   chalk.cyan('\n   | |   | |   | |/ / ') + 
-  //   chalk.blue('\n   |_|   |_|   |___/ ') + chalk.yellow('     v') + chalk.yellow(this.pkg.version) + '\n' +
-  //   chalk.cyan('\n______________________________________________________________________\n\n\n');
-
-
-
 
  
 var defaultGreeting = 
@@ -71,7 +95,7 @@ var defaultGreeting =
     },{
       name: 'version',
       message: '项目版本',
-      default:'0.0.1' 
+      default:'0.1.0' 
     },{
       name: 'author',
       message: '开发者',
@@ -80,26 +104,34 @@ var defaultGreeting =
       name: 'email',
       message: '开发者邮箱',
       default:'hawk@hawk.cn'
-    },{
+    },/*{
       name: 'mock_online_address',
       message: '模拟路径(建议不要用默认的, 注意==>两边要有协杠)',
-      default:'/min/static/giftCenter/'
+      default:'/assets/group/project/0.1.0/'
+    }*/{
+      name: 'group',
+      message: '项目组',
+      default: 'group'
+    },{
+      name: 'project',
+      message: '项目',
+      default: 'project'
     },{
       name: 'online_host',
       message: '线上域名(建议不要用默认的)',
-      default:'img1sw.baidu.com'
+      default:'online.cdn.cn'
     },{
       name: 'online_post',
       message: '线上端口(建议用默认的)',
       default:'80'
     },{
       name: 'local_host',
-      message: '本地域名(建议不要用默认的)',
-      default:'hawk.baidu.com'
+      message: '本地域名(建议不要用默认的,需要绑hosts)',
+      default:'xxx.cdn.cn'
     },{
       name: 'local_port',
-      message: '本地端口(建议不要用默认的,需要绑hosts)',
-      default:'8801'
+      message: '本地端口(建议不要用默认的)',
+      default:'80'
     },{
       name: 'qa_host',
       message: '测试域名(建议不要用默认的)',
@@ -109,28 +141,67 @@ var defaultGreeting =
       message: '测试域名(建议不要用默认的)',
       default:'8000'
     },{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      name: 'init_demo',
+      message: '是否初始化demo',
+      default:'Y/n'
+    },{
+   
+      name: 'npm_bower',
+      message: '是否按装通用组件库?',
+      default: 'Y/n',
+      warning: ''
      
+    },{
+      name: 'npm_install',
+      message: '是否按装hawk所需gulp插件?',
+      default: 'Y/n',
+      warning: ''
     }];
 
     this.prompt(prompts, function (props) {
       this.someOption = props.someOption;
-
+this.npm_install = (/^y/i).test(props.npm_install);
       this.name = props.name;
       this.version = props.version;
       this.author = props.author;
       this.email = props.email;
-      this.mock_online_address = props.mock_online_address;
+      //this.mock_online_address = props.mock_online_address;
+
+      this.mock_online_address = '/a/'+props.group+'/'+props.project+'/' + props.version + '/';
       this.online_host = props.online_host;
       this.online_port = props.online_port;
       this.local_host = props.local_host;
       this.local_port = props.local_port;
       this.qa_host = props.qa_host;
       this.qa_port = props.qa_port;
+      this.init_demo = (/^y/i).test(props.init_demo);
       //console.log(this.someOption);
+
+
+
+        //  this.prompt([
+        //   {
+        //     name   : 'npm_bower',
+        //     message: '现在是否要按装bower通用库?',
+        //     default: 'N/y',
+        //     warning: ''
+        //   }
+        // ], function (props, err) {
+
+          // if (err) {
+
+          //   return this.emit('error', err);
+          // }
+
+
+          this.npm_bower = (/^y/i).test(props.npm_bower);
+
+
+
+
+
+        //  cb();
+      //  }.bind(this));
 
 
 
@@ -139,37 +210,44 @@ var defaultGreeting =
   },
 
   app: function () {
-
-    
     this.copy('src/config.js','src/config.js');
-    //模块demo1
-    this.copy('src/mods/mod1/mod1.html','src/mods/mod1/mod1.html');
-    this.copy('src/mods/mod1/mod1.css','src/mods/mod1/mod1.css');
-    this.copy('src/mods/mod1/mod1.js','src/mods/mod1/mod1.js');
-    this.copy('src/mods/mod1/demo.html','src/mods/mod1/demo.html');
-    this.mkdir('src/mods/mod1/imgs');
-    this.copy('src/mods/mod1/imgs/test.png','src/mods/mod1/imgs/test.png');
+    if (this.init_demo) {
+          
+          //模块demo1
+          this.copy('src/mods/mod1/mod1.html','src/mods/mod1/mod1.html');
+          this.copy('src/mods/mod1/mod1.css','src/mods/mod1/mod1.css');
+          this.copy('src/mods/mod1/mod1.js','src/mods/mod1/mod1.js');
+          this.copy('src/mods/mod1/demo.html','src/mods/mod1/demo.html');
+          this.mkdir('src/mods/mod1/imgs');
+          this.copy('src/mods/mod1/imgs/test.png','src/mods/mod1/imgs/test.png');
 
-    //模块demo2
-    this.copy('src/mods/mod2/mod2.html','src/mods/mod2/mod2.html');
-    this.copy('src/mods/mod2/mod2.css','src/mods/mod2/mod2.css');
-    this.copy('src/mods/mod2/mod2.js','src/mods/mod2/mod2.js');
-    this.copy('src/mods/mod2/demo.html','src/mods/mod2/demo.html');
-    this.mkdir('src/mods/demo/imgs');
+          //模块demo2
+          this.copy('src/mods/mod2/mod2.html','src/mods/mod2/mod2.html');
+          this.copy('src/mods/mod2/mod2.css','src/mods/mod2/mod2.css');
+          this.copy('src/mods/mod2/mod2.js','src/mods/mod2/mod2.js');
+          this.copy('src/mods/mod2/demo.html','src/mods/mod2/demo.html');
+          this.mkdir('src/mods/demo/imgs');
 
-    //页面demo1
-    this.template('src/pages/page1/page1.html','src/pages/page1/page1.html');
-    this.copy('src/pages/page1/page1.css','src/pages/page1/page1.css');
-    this.copy('src/pages/page1/page1.js','src/pages/page1/page1.js');
-    this.mkdir('src/mods/page1/img');
+          //页面demo1
+          this.template('src/pages/page1/page1.html','src/pages/page1/page1.html');
+          this.copy('src/pages/page1/page1.css','src/pages/page1/page1.css');
+          this.copy('src/pages/page1/page1.js','src/pages/page1/page1.js');
+          this.mkdir('src/mods/page1/img');
 
+          //页面demo2
+          this.copy('src/pages/page2/page2.html','src/pages/page2/page2.html');
+          this.copy('src/pages/page2/page2.css','src/pages/page2/page2.css');
+          this.copy('src/pages/page2/page2.js','src/pages/page2/page2.js');
+          this.mkdir('src/mods/demo/img');
+    } else {
+      this.mkdir('src/pages');
+      this.mkdir('src/mods');
+      this.mkdir('src/widgets');
+    }
 
+    this.mkdir('src/common/icon/');
+    this.copy('src/common/sprite.html','src/common/sprite.html');
 
-    //页面demo2
-    this.copy('src/pages/page2/page2.html','src/pages/page2/page2.html');
-    this.copy('src/pages/page2/page2.css','src/pages/page2/page2.css');
-    this.copy('src/pages/page2/page2.js','src/pages/page2/page2.js');
-    this.mkdir('src/mods/demo/img');
 
    this.mkdir('build');
     
@@ -178,6 +256,40 @@ var defaultGreeting =
     //this.copy('_package.json', 'package.json');
     this.template('_package.json','package.json');
     //this.copy('_bower.json', 'bower.json');
+          if (this.npm_bower) {
+            this.bowerInstall('', {}, function (err) {
+
+              if (err) {
+                return console.log('\n' + chalk.yellow('please run "sudo bower install"\n'));
+              }
+
+              console.log(chalk.green('\n\nbower was installed successful. \n\n'));
+            });
+          } else {
+            console.log(chalk.yellow('\n手动安装bower install\n'));
+          }
+
+
+
+
+
+         // this.npm_install = (/^y/i).test(props.npm_install);
+
+
+          if (this.npm_install) {
+            this.npmInstall('', {}, function (err) {
+
+              if (err) {
+                return console.log('\n' + chalk.yellow('please run "sudo npm install"\n'));
+              }
+
+              console.log(chalk.green('\n\nnpm was installed successful. \n\n'));
+            });
+          } else {
+            console.log(chalk.yellow('首动安装npm install\n'));
+          }
+
+
 
 
   },
@@ -194,3 +306,4 @@ var defaultGreeting =
 });
 
 module.exports = ItvGenerator;
+
