@@ -20,18 +20,41 @@ var csso = require('gulp-csso');
 var imagemin = require('gulp-imagemin');
 var merge = require('merge-stream');
 var spritesmith = require('gulp.spritesmith');
+var hawksprite = require('gulp-hawksprite');
+
+
+
+var base64 = require('gulp-base64');
+
+gulp.task('sprite64',['hawksprite'], function () {
+    return gulp.src('./build/common/icon/sprite.css')
+        .pipe(base64({ 
+            baseDir: './build',          
+            maxImageSize: 32*1024, // bytes,
+            deleteAfterEncoding: true,
+            debug: true
+        }))
+        .pipe(gulp.dest('./build/common/icon'));
+});
+
+gulp.task('hawksprite',['sprite'], function () {
+  return gulp.src('./build/common/icon/sprite.css')
+    .pipe(hawksprite())
+    .pipe(gulp.dest('./build/common/icon/'));
+});
 
 gulp.task('sprite', function () {
   // Generate our spritesheet
   var spriteData = gulp.src('./src/common/icon/*.png')
       .pipe(spritesmith({
+        'algorithm': 'binary-tree',
         imgName: './build/common/icon/sprite.png',
         cssName: './build/common/icon/sprite.css'
       }));
 
   // Pipe image stream through image optimizer and onto disk
   var imgStream = spriteData.img
-    .pipe(imagemin())
+    .pipe(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true }))
     .pipe(gulp.dest('./'));
 
   // Pipe CSS stream through CSS optimizer and onto disk
@@ -145,7 +168,7 @@ gulp.task("jsmin",function(){
     .pipe(gulp.dest("./build"));
 });
 
-gulp.task("dev",["include",'css','sprite'], function () {
+gulp.task("dev",["include",'css','hawksprite'], function () {
 
 
 /**
@@ -177,6 +200,45 @@ gulp.task("dev",["include",'css','sprite'], function () {
 
         hawk_combo.start();
 });
+
+
+
+
+gulp.task("dev1",["include",'css','sprite64'], function () {
+
+
+/**
+ * 服务器开启提示
+ */
+
+ console.log('\n');
+ var mock_online_address_temp = mock_online_address.substr(1,mock_online_address.length);
+ console.log(
+
+    chalk.blue("服务器开始运行 ")+chalk.cyan('复制根目录地址访问：')+chalk.bgRed("http://"+local_host+":"+local_port+mock_online_address)+'\n'+  
+    chalk.blue('combo功能示例^_^：') + chalk.bgRed("http://"+local_host+":"+local_port + '/'+ mock_online_address_temp+'??' + 'pages/page1/page1.js,'+'pages/page2/page2.js')+'\n'+
+    chalk.blue('关闭按：')+chalk.green('ctrl+c\n')+
+    chalk.blue('配置文件在根目录：')+chalk.green('abc.json')+'\n'+
+    chalk.blue('abc.json配置文件：\n')+chalk.green(JSON.stringify({
+        "mock_online_address":mock_online_address ,
+        "online_host": online_host,
+        "online_port": 80,
+        "local_host": local_host,
+        "local_port": local_port,
+        "qa_host": abc.qa_host,
+        "qa_port": abc.qa_port
+    }, null, 4))+'\n'
+ );
+
+    gulp.src(["./build/**/*.js"])
+       // .pipe(uglify())
+        .pipe(gulp.dest("./build"));
+
+        hawk_combo.start();
+});
+
+
+
 
 
 
