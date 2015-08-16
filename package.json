@@ -1,6 +1,6 @@
 {
   "name": "generator-hawk",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "> [youyong](http://youyong.ba)",
   "main": "app/index.js",
   "dependencies": {

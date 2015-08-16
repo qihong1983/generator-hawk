@@ -21,11 +21,56 @@ var imagemin = require('gulp-imagemin');
 var merge = require('merge-stream');
 var spritesmith = require('gulp.spritesmith');
 var hawksprite = require('gulp-hawksprite');
+var md5 = require("gulp-md5-plus");
+var clean = require('gulp-clean');
 
 
 
 var base64 = require('gulp-base64');
 
+//加入md5
+gulp.task('cssmd5' ,function() {
+    var imgSrc = './build/**/*.css',
+        quoteSrc = './build/**/*.html', // [./output/static/css/**/*.css',./output/static/js/**/*.js']
+        imgDst = './build';
+
+    return gulp.src(imgSrc)
+        .pipe(imagemin())
+        .pipe(md5(10 ,quoteSrc))
+        .pipe(gulp.dest(imgDst));
+});
+
+gulp.task('jsmd5' ,function() {
+    var imgSrc = './build/**/*.js',
+        quoteSrc = './build/**/*.html', // [./output/static/css/**/*.css',./output/static/js/**/*.js']
+        imgDst = './build';
+
+    return gulp.src(imgSrc)
+        .pipe(imagemin())
+        .pipe(md5(10 ,quoteSrc))
+        .pipe(gulp.dest(imgDst));
+});
+
+gulp.task('imgmd5' ,function() {
+    var imgSrc = './build/**/*.png',
+        quoteSrc = './build/**/*.css', // [./output/static/css/**/*.css',./output/static/js/**/*.js']
+        imgDst = './build';
+
+    return gulp.src(imgSrc)
+        .pipe(imagemin())
+        .pipe(md5(10 ,quoteSrc))
+        .pipe(gulp.dest(imgDst));
+});
+
+
+//清理
+gulp.task('clean', function () {
+    return gulp.src('./build')
+        .pipe(clean({force: true}))
+        .pipe(gulp.dest('./'));
+});
+
+//合成sprite图片
 gulp.task('sprite64',['hawksprite'], function () {
     return gulp.src('./build/common/icon/sprite.css')
         .pipe(base64({ 
@@ -37,9 +82,28 @@ gulp.task('sprite64',['hawksprite'], function () {
         .pipe(gulp.dest('./build/common/icon'));
 });
 
+gulp.task('onlineSprite64',['hawksprite'], function () {
+    return gulp.src('./build/common/icon/sprite.css')
+        .pipe(base64({ 
+            baseDir: './build',          
+            maxImageSize: 32*1024, // bytes,
+            deleteAfterEncoding: true,
+            debug: true
+        }))
+        .pipe(minifyCss())
+        .pipe(gulp.dest('./build/common/icon'));
+});
+
 gulp.task('hawksprite',['sprite'], function () {
   return gulp.src('./build/common/icon/sprite.css')
     .pipe(hawksprite())
+    .pipe(gulp.dest('./build/common/icon/'));
+});
+
+gulp.task('onlineHawksprite',['sprite'], function () {
+  return gulp.src('./build/common/icon/sprite.css')
+    .pipe(hawksprite())
+    .pipe(minifyCss())
     .pipe(gulp.dest('./build/common/icon/'));
 });
 
@@ -98,7 +162,7 @@ gulp.task('include',['js','css'], function() {
 });
 
 //这个是测试环境
-gulp.task('qa',['js','css'], function() {
+gulp.task('qa',['clean','js','css'], function() {
   gulp.src(['./src/**/*.html'])
     .pipe(fileinclude({
       prefix: '@@',
@@ -115,8 +179,8 @@ gulp.task('qa',['js','css'], function() {
 
 
 //这个是测试环境
-gulp.task('publish',['jsmin','cssmin'], function() {
-  gulp.src(['./src/**/*.html'])
+gulp.task('publishinclude64',['jsmin','cssmin','onlineSprite64'], function() {
+  return gulp.src(['./src/**/*.html'])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
@@ -134,6 +198,43 @@ gulp.task('publish',['jsmin','cssmin'], function() {
     //hawk_combo.start();
 
 });
+
+
+gulp.task('publishinclude',['jsmin','cssmin','onlineHawksprite'], function() {
+  return gulp.src(['./src/**/*.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+   // .pipe(gulp.dest('./build'))
+    .pipe(hawkjs(true))
+    //.pipe(gulp.dest('./build'))
+    .pipe(hawkcss())
+    //.pipe(gulp.dest('./build'))
+    .pipe(hawkRename({"changeName":abc.online_host}))
+    //.pipe(gulp.dest('./build'))
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('./build'));
+
+    //hawk_combo.start();
+
+});
+
+gulp.task("md564",['publishinclude64'],function(){
+  gulp.start(['cssmd5','jsmd5','imgmd5']);
+});
+
+gulp.task("md5",['publishinclude'],function(){
+  gulp.start(['cssmd5','jsmd5','imgmd5']);
+});
+
+gulp.task('online64',['clean'],function () {
+  gulp.start('md564');
+});
+gulp.task('online',['clean'],function () {
+  gulp.start('md5');
+});
+
 
 
 gulp.task('css', function() {
@@ -204,7 +305,7 @@ gulp.task("dev",["include",'css','hawksprite'], function () {
 
 
 
-gulp.task("dev1",["include",'css','sprite64'], function () {
+gulp.task("dev64",["include",'css','sprite64'], function () {
 
 
 /**
