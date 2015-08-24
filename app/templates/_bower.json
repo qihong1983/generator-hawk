@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-	"hawk_bower_test": "",
-	"qihong-test-ll": ""
+	"qihong-test-ll": "",
+  "qihong-test-ll1": ""
   }
 }

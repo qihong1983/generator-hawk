@@ -5,5 +5,7 @@
 	"local_host": "<%= local_host %>",
 	"local_port": "<%= local_port %>",
 	"qa_host": "<%= qa_host %>",
-	"qa_port": "<%= qa_port %>"
+	"qa_port": "<%= qa_port %>",
+	"ftp_online_root" : "<%= ftp_online_root %>",
+	"ftp_qa_root": "<%= ftp_qa_root %>"
 }

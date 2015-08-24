@@ -141,11 +141,18 @@ var defaultGreeting =
       message: '测试域名(建议不要用默认的)',
       default:'8000'
     },{
+      name: 'ftp_online_root',
+      message: chalk.cyan('线上ftp根目录到站点根目录')+chalk.bgRed('(建议不要用默认的,末尾不要用/。如果是根目录直接打/)'),
+      default:'/var/www/html'
+    },{
+      name: 'ftp_qa_root',
+      message: chalk.cyan('测试ftp根目录到站点根目录')+chalk.bgRed('(建议不要用默认的,末尾不要用/。如果是根目录直接打/)'),
+      default:'/var/www/html'
+    },{
       name: 'init_demo',
       message: '是否初始化demo',
       default:'Y/n'
     },{
-   
       name: 'npm_bower',
       message: '是否按装通用组件库?',
       default: 'Y/n',
@@ -174,6 +181,8 @@ this.npm_install = (/^y/i).test(props.npm_install);
       this.local_port = props.local_port;
       this.qa_host = props.qa_host;
       this.qa_port = props.qa_port;
+      this.ftp_online_root = props.ftp_online_root;
+      this.ftp_qa_root = props.ftp_qa_root;
       this.init_demo = (/^y/i).test(props.init_demo);
       //console.log(this.someOption);
 
@@ -247,7 +256,7 @@ this.npm_install = (/^y/i).test(props.npm_install);
 
     this.mkdir('src/common/icon/');
     this.copy('src/common/sprite.html','src/common/sprite.html');
-
+    this.copy('src/common/icon/sprite.css','build/common/icon/sprite.css');
 
    this.mkdir('build');
     

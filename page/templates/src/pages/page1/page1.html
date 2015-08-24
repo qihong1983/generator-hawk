@@ -7,11 +7,11 @@
 
 
 	
-<script type="text/javascript" src="//<%= local_host %>:<%= local_port %>/??/min/common/js/sea/sea.js,min/common/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="http://<%= local_host %>:<%= local_port %>/??/min/common/js/sea/sea.js,min/common/js/jquery-1.8.3.js"></script>
 
 </script>
 
-<script type="text/javascript" src="//<%= local_host %>:<%= local_port %>/min/static/giftCenter/config.js"></script>
+<script type="text/javascript" src="http://<%= local_host %>:<%= local_port %><%= mock_online_address %>config.js"></script>
 
 @@include('../../common/sprite.html')
 <!-- css:start -->
@@ -32,6 +32,10 @@
 	</div>
 	<script type="text/javascript" src="pages/<%= name %>/<%= name %>.js"></script>
 	<script>
+		/** 
+		 * @class <%= name %>
+		 * @uses <%= name %>
+		 */
 		seajs.use('pages/<%= name %>/<%= name %>',function (<%= name %>) {
 			var P = new <%= name %>();
 

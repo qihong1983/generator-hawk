@@ -12,9 +12,9 @@ var ItvGenerator = yeoman.generators.Base.extend({
     this.pkg = require('../package.json');
 
     this.on('end', function () {
-      if (!this.options['skip-install']) {
-        this.installDependencies();
-      }
+      // if (!this.options['skip-install']) {
+      //   this.installDependencies();
+      // }
     });
   },
 
