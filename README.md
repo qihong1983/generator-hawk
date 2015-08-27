@@ -10,11 +10,11 @@ by 小洪 qihongbin@163.com
 
 > Generator-Hawk 是web前端项目脚手架方案，用来生成项目代码骨架，你可以方便的基于此结构来开发你的项目，并享用到 web前端的诸多优秀特性。
 
-### Generator-Hawk 安装
+### 安装
 
 > npm install -g yo generator-hawk
 
-### Generator-Hawk 所需要的环境
+### 所需要的环境
 
 > node
 > gitbash
@@ -31,7 +31,7 @@ by 小洪 qihongbin@163.com
 
 > 方案的使用方案的使用方案的使用  
 
-## Generator-Hawk 组成
+## 组成
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/tools.jpg" style="width:487px; height:auto;" />
 
