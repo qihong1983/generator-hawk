@@ -238,6 +238,30 @@ define(function (require, exports, module) {
 
 ```
 
+>  页面模块的定义
+
+```html
+<!-- css 和 js的引入在构建的过程中会自动被抽取出来合并到页面里-->
+<link rel="stylesheet" href="mods/mod1/mod1.css" />
+<script type="text/javascript" src="mods/mod1/mod1.js"></script>
+<div class="mod1">
+	模块1
+</div>
+<script>
+	/** 
+	 * @class mod1
+	 * @uses mod1
+	 */
+	seajs.use('mods/mod1/mod1', function (Mod1) {
+		var M = new Mod1();
+
+		M.init();
+	});
+</script>
+```
+
+
+
 
 ## 插件的使用(gulpfile.js)
 ```javascript
