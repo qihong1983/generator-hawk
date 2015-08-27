@@ -24,7 +24,9 @@ by 小洪 qihongbin@163.com
 ## 环境配置
 
 ### gitbash 中文环境配置
+
 > gitbashgitbashgitbashgitbashgitbashgitbash
+
 ## Generator-Hawk 方案的使用 
 
 > 方案的使用方案的使用方案的使用  
