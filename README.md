@@ -120,25 +120,25 @@ by 小洪 qihongbin@163.com
     ├── mods/  
     │   │            
     │   ├── mod1			   业务公用模块目录
-    │	│	├── demo.html
-    │	│	├── mod1.html
+    │	│   ├── demo.html
+    │	│   ├── mod1.html
     │	│   ├── mod1.js
-    │	│	└── mod1.css
+    │	│   └── mod1.css
     │	└── mod2
-    │		├── demo.html
-    │		├── mod2.html
-    │		├── mod2.js
-    │		└── mod2.css
+    │	    ├── demo.html
+    │	    ├── mod2.html
+    │	    ├── mod2.js
+    │	    └── mod2.css
     │		
     ├── widgets/              组件目录（通用组件）
     │   │
     │   ├── widget1/
-	│	│	├── demo.html
-	│	│	├── widget1.js
+    │	│   ├── demo.html
+    │	│   ├── widget1.js
     │   │   └── widget1.css
     │   └── widget2/          
-    │		├── demo.html
-    │		├── widget2.js
+    │	    ├── demo.html
+    │	    ├── widget2.js
     │       └── widget2.css
     └── pages/                         
         └── page1/             
