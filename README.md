@@ -98,6 +98,55 @@ by 小洪 qihongbin@163.com
 
 > gulp online64Debug: 打包成线上环境 不提交到ftp服务器 
 
+### 目录结果 & 代码
+
+#### 目录结果
+
+
+```
+./
+├── gulpfile.js              项目构建主任务
+├── package.json              项目配置文件
+├── README.md                 项目自述文件
+├── build/                    构建目录
+├── doc/                      文档存放目录
+├── .bower.json               组件安装源配置(gitlab or github)
+├── .bowerrc                  
+├── .editorconfig
+├── .gitignore
+├── abc.json 				  项目配置文件
+└── src/                      源码目录
+    ├── config.js             项目config.js
+    ├── mods/                 业务公用模块目录
+    │   ├── mod1
+    │	│	├── demo.html
+    │	│	├── mod1.html
+    │	│	├── mod1.js
+    │	│	└── mod1.css
+    │	└── mod2
+    │		├── demo.html
+    │		├── mod2.html
+    │		├── mod2.js
+    │		└── mod2.css
+    │		
+    ├── widgets/              组件目录（通用组件）
+    │   ├── widget1/
+	│	│	├── demo.html
+	│	│	├── widget1.js
+    │   │   └── widget1.css
+    │   └── widget2/          
+    │		├── demo.html
+    │		├── widget2.js
+    │       └── widget2.css
+    └── pages/                         
+        └── page1/             
+            ├── page1.js      
+            ├── page1.sss        
+            └── page1.html       
+            ...
+```
+
+
 
 ## 插件的使用(gulpfile.js)
 ```javascript
