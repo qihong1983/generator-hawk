@@ -1,8 +1,10 @@
-# css合并
+# KISSY 项目构建工具，Generator-clam
+
+
 
 ## 安装 
 
-> npm install gulp-hawkcss
+> npm install -g yo generator-hawk
 
 ## 插件的使用(gulpfile.js)
 ```javascript
