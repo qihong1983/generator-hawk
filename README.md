@@ -8,9 +8,8 @@ by 小洪 qihongbin@163.com
 
 ## Generator-Hawk 工具简介
 
-> KISSY MINI 是一款面向无线前端研发的 JavaScript 类库，Generator-Mask 是 KISSY MINI 项目脚手架工具，用来生成项目代码骨架，你可以方便的基于此结构来开发你的项目，并享用到 KISSY MINI 的诸多优秀特性。
+> Generator-Hawk 是 web前端 项目脚手架工具，用来生成项目代码骨架，你可以方便的基于此结构来开发你的项目，并享用到 web前端 的诸多优秀特性。
 
-Generator-Mask 是 Generator-clam 简化开源版本，设计原理完全一致，Clam 绑定了更多阿里内部私有容器技术规范，阿里内部（阿里旅行）的同学请异步Generator-clam
 
 ## 插件的使用(gulpfile.js)
 ```javascript
