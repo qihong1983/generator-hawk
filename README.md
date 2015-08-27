@@ -185,53 +185,56 @@ export LESSHARSET=utf-8 #$ git log 命令不像其它 vcs 一样，n 条 log 从
 
 
 
-##### 页面代码
+##### 模块的引入方式
+
+> 代码演示
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-<title>page1</title>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="pages/page1/page1.css" />
+@@include('../../mods/mod1/mod1.html')
 
-<script type="text/javascript" src="http://xxx.cdn.cn:8801/??/min/common/js/sea/sea.js,min/common/js/jquery-1.8.3.js"></script>
-
-</script>
-
-<script type="text/javascript" src="http://xxx.cdn.cn:8801/a/group/project/0.1.0/config.js"></script>
-@@include('../../common/sprite.html')
-<!-- css:start -->
-<!-- css:end -->
-<!-- js:start -->
-<!-- js:end -->
-</head>
-<body>
-	<div class="page1">
-		页面
-
-				@@include('../../mods/mod1/mod1.html')
-
-				@@include('../../mods/mod2/mod2.html')
-
-	</div>
-	<script type="text/javascript" src="pages/page1/page1.js"></script>
-	<script>
-		/** 
-		 * @class page1
-		 * @uses page1
-		 */
-		seajs.use('pages/page1/page1',function (Page1) {
-			var P = new Page1();
-
-			P.init();
-		});
-
-	</script>
+```
 
 
-</body>
-</html>
+> 如图
+
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/includehtml.jpg"  />
+
+
+##### 采用seajs的加载和定义(//seajs.org)
+
+> 在页面里用sea.use
+
+```javascript
+	seajs.use('pages/page1/page1',function (Page1) {
+        var P = new Page1();
+
+        P.init();
+    });
+```
+
+> seajs模块定义
+
+```javascript
+define(function (require, exports, module) {
+
+	    "use strict"
+
+        function Page1(opt) {
+            if (!(this instanceof Page1)) {
+                return new Page1(opt);
+            }
+        }
+
+		Page1.prototype = {
+            init: function () {
+                console.log('init page1');
+            },
+            rander: function () {
+                console.log('rander page1');
+            }
+	    };
+		module.exports = Page1;
+});
 
 ```
 
