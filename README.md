@@ -1,6 +1,10 @@
-# KISSY 项目构建工具，Generator-clam
+# 前端集成自动化项目构建方案，Generator-hawk
 
 
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
+
+
+by 小洪 qihongbin@163.com
 
 ## 安装 
 
