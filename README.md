@@ -25,13 +25,42 @@ by 小洪 qihongbin@163.com
 
 ### gitbash 中文环境配置
 
-> gitbashgitbashgitbashgitbashgitbashgitbash
+> vi /etc/gitconfig
 
-## 方案的使用 
+```shell
+[gui]
 
-> 方案的使用方案的使用方案的使用  
+encoding = utf-8 #代码库统一用urf-8,在git gui中可以正常显示中文
 
-## 组成
+[i18n]
+
+commitencoding = GB2312 #log编码，window下默认gb2312,声明后发到服务器才不会乱码
+
+[svn]
+
+pathnameencoding = GB2312 #支持中文路径
+
+```
+
+> vi /etc/git-completion.bash
+
+```shell
+alias ls='ls --show-control-chars --color=auto' #ls能够正常显示中文
+```
+
+> vi /etc/inputrc
+
+``` shell
+set output-meta on #bash中可以正常输入中文
+
+set convert-meta off
+```
+
+> vi /etc/profile
+
+```shell
+export LESSHARSET=utf-8 #$ git log 命令不像其它 vcs 一样，n 条 log 从头滚到底，它会恰当地停在第一页，按  space 键再往后翻页。这是通过将 log 送给 less 处理实现的。以上即是设置 less 的字符编码，使得 $ git log  可以正常显示中文。
+```
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/tools.jpg" style="width:487px; height:auto;" />
 
@@ -151,6 +180,8 @@ by 小洪 qihongbin@163.com
 ##### 目录和文件结构图
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/dtree.jpg"  />
+
+
 
 ## 插件的使用(gulpfile.js)
 ```javascript
