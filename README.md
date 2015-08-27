@@ -61,6 +61,10 @@ by 小洪 qihongbin@163.com
 
 > $npm install –g generator-hawk  #generator-hawk安装
 
+## 走起
+
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/zouqi.jpg"  />
+
 
 ## 插件的使用(gulpfile.js)
 ```javascript
