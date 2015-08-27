@@ -235,11 +235,11 @@ export LESSHARSET=utf-8 #$ git log 命令不像其它 vcs 一样，n 条 log 从
 > 在页面里用sea.use
 
 ```javascript
-	seajs.use('pages/page1/page1',function (Page1) {
-        var P = new Page1();
+seajs.use('pages/page1/page1',function (Page1) {
+    var P = new Page1();
 
-        P.init();
-    });
+    P.init();
+});
 ```
 
 > seajs模块定义
