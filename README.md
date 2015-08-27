@@ -78,7 +78,7 @@ by 小洪 qihongbin@163.com
 
 >yo hawk:mod:初始化一个模块
 
->yo hawk:widget:初始化一个组件
+>yo hawk:widget:初始化一个组件  
 
 #### gulp打包
 
