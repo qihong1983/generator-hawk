@@ -69,9 +69,13 @@ by 小洪 qihongbin@163.com
 ### 基本命令
 
 >yo hawk:h:打印帮助
+
 >yo hawk:初始化一个标准的Project
+
 >yo hawk:初始化一个页面
+
 >yo hawk:mod:初始化一个模块
+
 >yo hawk:widget:初始化一个组件
 
 ## 插件的使用(gulpfile.js)
