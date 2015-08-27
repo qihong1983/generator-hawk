@@ -31,6 +31,10 @@ by 小洪 qihongbin@163.com
 
 > 方案的使用方案的使用方案的使用  
 
+## Generator-Hawk 组成
+
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
+
 ## 插件的使用(gulpfile.js)
 ```javascript
 var gulp = require('gulp'),
