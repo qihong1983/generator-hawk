@@ -148,7 +148,9 @@ by 小洪 qihongbin@163.com
             ...
 ```
 
+##### 目录和文件结构图
 
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/dtree.jpg"  />
 
 ## 插件的使用(gulpfile.js)
 ```javascript
