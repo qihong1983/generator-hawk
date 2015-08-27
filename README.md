@@ -14,11 +14,41 @@ by 小洪 qihongbin@163.com
 
 > npm install -g yo generator-hawk
 
-### 所需要的环境
+### 功能介绍
 
-> node
-> gitbash
-> charles
+> 按需合并
+
+> 压缩js和css
+
+> 图片压缩
+
+> 一键式启动 （http combo 本地服务）
+
+> 合成雪碧图
+
+> 图片转base64编码
+
+> 一键式发布ftp  测试服务器 & 一键式发布ftp 预发服务器 & 一键式发布ftp  cdn服务器 
+
+> 注释文档
+
+> 代理服务调试代码 
+
+> 线上调试 
+
+> md5戳
+
+> 通用组件管理
+
+> 脚首架 （输出目录结构规范和代码规范--自动关联）
+
+> 页面模块化方案
+
+> 地址映射
+
+> url引用规范  (http://xxx.cdn.cn/a/group/project/0.1.0/...)
+
+
 
 
 ## 环境配置
@@ -265,12 +295,18 @@ define(function (require, exports, module) {
 > 具体baidu搜索charles使用教程
 
 
+
 ## http combo功能介绍
 
 > 原理图
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/http_combo.jpg"  />
 
+> 引用方式
+
+```html
+http://xxx.cdn.cn:8801/a/group/project/0.1.0/??pages/page1/page1.js,pages/page2/page2.js
+```
 
 > cdn nginx的配置 (https://github.com/alibaba/nginx-http-concat)
 
