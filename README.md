@@ -1,50 +1,57 @@
-# generator-itv 
+# css合并
 
-> [Yeoman](http://yeoman.io) generator
+## 安装 
 
-## Recommend a Book
+> npm install gulp-hawkcss
 
-![](https://camo.githubusercontent.com/3d234a2cef3821c3d10b09ef083ad4c00353b2d2/687474703a2f2f67746d7330312e616c6963646e2e636f6d2f7470732f69312f54316a44564746714e585858626656712e642d3230352d3236362e706e67)
+## 插件的使用(gulpfile.js)
+```javascript
+var gulp = require('gulp'),
+  hawkcss = require('gulp-hawkcss');
 
-## Getting Started
-
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```bash
-$ npm install -g yo
+gulp.task('default', function() {
+  gulp.src('./*.html')
+    .pipe(hawkcss())
+    .pipe(gulp.dest('dest/'));
+});
 ```
 
-### Yeoman Generators
+## 示例html代码
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+> http://a.cdn.cn/??assets/a1.css,assets/a2.css,assets/a3.css
 
-To install generator-itv from npm, run:
+```html
+<!DOCTYPE html>
+<html>
+<head lang="zh-cmn-Hans">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="assets/mian.css" />
+    <!-- css:start -->
 
-```bash
-$ npm install -g generator-itv
+    <!-- css:end -->
+
+    <title>cssCombo</title>
+</head>
+<body>
+    <link rel="stylesheet" href="assets/a1.css" />
+    <link rel="stylesheet" href="assets/a2.css" />
+    <div class="a1">
+        a1
+    </div>
+    <div class="a2">
+        a2
+    </div>
+
+    <link rel="stylesheet" href="assets/a3.css" />
+    <div class="a3">
+        a3
+    </div>
+
+
+</body>
+</html>
 ```
 
-Finally, initiate the generator:
 
-```bash
-$ yo itv
-```
-
-### Getting To Know Yeoman
-
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
-
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
-
-
-## License
-
-MIT
