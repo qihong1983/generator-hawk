@@ -117,8 +117,9 @@ by 小洪 qihongbin@163.com
 ├── abc.json 				  项目配置文件
 └── src/                      源码目录
     ├── config.js             项目config.js
-    ├── mods/                 业务公用模块目录
-    │   ├── mod1
+    ├── mods/  
+    │   │            
+    │   ├── mod1				业务公用模块目录
     │	│	├── demo.html
     │	│	├── mod1.html
     │	│	├── mod1.js
@@ -130,6 +131,7 @@ by 小洪 qihongbin@163.com
     │		└── mod2.css
     │		
     ├── widgets/              组件目录（通用组件）
+    │   │
     │   ├── widget1/
 	│	│	├── demo.html
 	│	│	├── widget1.js
