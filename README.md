@@ -36,7 +36,7 @@ by 小洪 qihongbin@163.com
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/tools.jpg"  />
 
 
-## 主要工具
+### 主要工具
 
 > Yeoman：脚首架
 
@@ -47,7 +47,20 @@ by 小洪 qihongbin@163.com
 > Gitlab：代码仓库
 
 
-## 
+### 工的下载
+
+> http://msysgit.github.io/   gitbash下载
+
+> http://nodejs.org         nodejs下载
+
+> $npm install –g yo 			  #yeaman安装
+
+> $npm install –g gulp 	 	  #gulp安装
+
+> $npm install –g bower 		  #bower安装
+
+> $npm install –g generator-hawk  #generator-hawk安装
+
 
 ## 插件的使用(gulpfile.js)
 ```javascript
