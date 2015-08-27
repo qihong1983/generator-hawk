@@ -66,7 +66,9 @@ by 小洪 qihongbin@163.com
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/zouqi.jpg"  />
 
 
-### 基本命令
+### 基本命令-- yo & gulp
+
+#### yo初始化
 
 >yo hawk:h:打印帮助
 
@@ -77,6 +79,25 @@ by 小洪 qihongbin@163.com
 >yo hawk:mod:初始化一个模块
 
 >yo hawk:widget:初始化一个组件
+
+#### gulp打包
+
+> gulp dev: 本地运行 
+
+> gulp dev64: 本地运行图片base64编码
+
+> gulp qa: 打包到测试环境 并自动提交到ftp服务器
+
+> gulp qa64: 打包到测试环境图片base64编码 并自动提交到ftp服务器
+
+> gulp online:  打包成线上环境 并自动提交到ftp服务器
+
+> gulp online64: 打包成线上环境64 并自动提交到ftp服务器
+
+> gulp onlineDebug: 打包成线上环境 不提交到ftp服务器
+
+> gulp online64Debug: 打包成线上环境 不提交到ftp服务器 
+
 
 ## 插件的使用(gulpfile.js)
 ```javascript
