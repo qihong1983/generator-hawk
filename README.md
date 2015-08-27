@@ -1,4 +1,4 @@
-# 前端集成自动化项目构建方案，Generator-hawk
+# 前端集成自动化项目构建方案Hawk
 
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
