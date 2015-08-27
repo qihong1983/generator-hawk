@@ -39,9 +39,13 @@ by 小洪 qihongbin@163.com
 ## 主要工具
 
 > Yeoman：脚首架
+
 > Gulp:打包/构建/预发/发布/开发环境
+
 > Bower:组件管理依赖关系
+
 > Gitlab：代码仓库
+
 
 ## 
 
