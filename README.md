@@ -185,6 +185,57 @@ export LESSHARSET=utf-8 #$ git log 命令不像其它 vcs 一样，n 条 log 从
 
 
 
+##### 页面代码
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>page1</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="pages/page1/page1.css" />
+
+<script type="text/javascript" src="http://xxx.cdn.cn:8801/??/min/common/js/sea/sea.js,min/common/js/jquery-1.8.3.js"></script>
+
+</script>
+
+<script type="text/javascript" src="http://xxx.cdn.cn:8801/a/group/project/0.1.0/config.js"></script>
+@@include('../../common/sprite.html')
+<!-- css:start -->
+<!-- css:end -->
+<!-- js:start -->
+<!-- js:end -->
+</head>
+<body>
+	<div class="page1">
+		页面
+
+				@@include('../../mods/mod1/mod1.html')
+
+				@@include('../../mods/mod2/mod2.html')
+
+	</div>
+	<script type="text/javascript" src="pages/page1/page1.js"></script>
+	<script>
+		/** 
+		 * @class page1
+		 * @uses page1
+		 */
+		seajs.use('pages/page1/page1',function (Page1) {
+			var P = new Page1();
+
+			P.init();
+		});
+
+	</script>
+
+
+</body>
+</html>
+
+```
+
+
 ## 插件的使用(gulpfile.js)
 ```javascript
 var gulp = require('gulp'),
