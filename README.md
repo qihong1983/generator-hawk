@@ -119,13 +119,13 @@ by 小洪 qihongbin@163.com
     ├── config.js             项目config.js
     ├── mods/  
     │   │            
-    │   ├── mod1				业务公用模块目录
-    │	│	├── demo.html
-    │	│	├── mod1.html
-    │	│	├── mod1.js
-    │	│	└── mod1.css
-    │	└── mod2
-    │		├── demo.html
+    │   ├── mod1			  业务公用模块目录
+    │  	├── demo.html
+    │ 	├── mod1.html
+    │   │   ├── mod1.js
+    │   │	└── mod1.css
+    │   └── mod2
+    │       ├── demo.html
     │		├── mod2.html
     │		├── mod2.js
     │		└── mod2.css
