@@ -47,7 +47,7 @@ by 小洪 qihongbin@163.com
 > Gitlab：代码仓库
 
 
-### 工的下载
+### 工具下载
 
 > http://msysgit.github.io/   gitbash下载
 
@@ -65,6 +65,14 @@ by 小洪 qihongbin@163.com
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/zouqi.jpg"  />
 
+
+### 基本命令
+
+>yo hawk:h:打印帮助
+>yo hawk:初始化一个标准的Project
+>yo hawk:初始化一个页面
+>yo hawk:mod:初始化一个模块
+>yo hawk:widget:初始化一个组件
 
 ## 插件的使用(gulpfile.js)
 ```javascript
