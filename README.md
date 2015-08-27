@@ -33,7 +33,17 @@ by 小洪 qihongbin@163.com
 
 ## Generator-Hawk 组成
 
-<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/tools.png"  />
+
+
+## 主要工具
+
+> Yeoman：脚首架
+> Gulp:打包/构建/预发/发布/开发环境
+> Bower:组件管理依赖关系
+> Gitlab：代码仓库
+
+## 
 
 ## 插件的使用(gulpfile.js)
 ```javascript
