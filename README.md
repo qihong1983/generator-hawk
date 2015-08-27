@@ -6,9 +6,9 @@
 
 by 小洪 qihongbin@163.com
 
-## Generator-Hawk 工具简介
+## Generator-Hawk 方案简介
 
-> Generator-Hawk 是 web前端 项目脚手架工具，用来生成项目代码骨架，你可以方便的基于此结构来开发你的项目，并享用到 web前端 的诸多优秀特性。
+> Generator-Hawk 是web前端 项目脚手架方案，用来生成项目代码骨架，你可以方便的基于此结构来开发你的项目，并享用到 web前端 的诸多优秀特性。
 
 
 ## 插件的使用(gulpfile.js)
