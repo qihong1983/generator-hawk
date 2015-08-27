@@ -33,7 +33,7 @@ by 小洪 qihongbin@163.com
 
 ## Generator-Hawk 组成
 
-<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/tools.png"  />
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/tools.jpg"  />
 
 
 ## 主要工具
