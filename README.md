@@ -294,6 +294,15 @@ define(function (require, exports, module) {
 
 > 具体baidu搜索charles使用教程
 
+## 可扩展的
+
+> * less&scss、
+> *	js&css语法检测、
+> *	coffeescript、
+> *	h5构建方案、
+> *	单页应用构建方案、
+> *	离线构建方案
+> *	通用组件包的选择
 
 
 ## http combo功能介绍
