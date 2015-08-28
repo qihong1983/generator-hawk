@@ -1,4 +1,4 @@
-# 前端集成自动化项目构建方案Hawk
+# web前端集成自动化构建方案Hawk
 
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
@@ -58,6 +58,7 @@ by 小洪 qihongbin@163.com
 > vi /etc/gitconfig
 
 ```shell
+
 [gui]
 
 encoding = utf-8 #代码库统一用urf-8,在git gui中可以正常显示中文
