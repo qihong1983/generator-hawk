@@ -4,7 +4,7 @@
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
 
 
-[![asciicast](https://asciinema.org/a/20975.png)](https://asciinema.org/a/20975)
+
 
 by 小洪 qihongbin@163.com
 
