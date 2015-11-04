@@ -88,7 +88,7 @@ by 小洪 qihongbin@163.com
 
     好处是页面内不相关的区块进行解耦，代码逻辑不混淆，方便多人并行开发同一个页面，也方便后期局部改版或替换
 
-    <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/includehtml.jpg"  />
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/includehtml.jpg"  />
 
 #### 约定
 
@@ -99,7 +99,7 @@ by 小洪 qihongbin@163.com
         2、避免同名文件被覆盖，在项目版本迭代上线过程中不会出现老代码和新代码的不统一导制用户短时间访问出现问题
 
     这个方式一般是先上前端代码在上后端代码实现切到线上的过程
-    
+
 #### 约定
 
 > 按需合并
