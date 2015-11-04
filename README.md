@@ -131,11 +131,12 @@ by 小洪 qihongbin@163.com
 
 > ctrl + s 保存并刷新网页
 
+    需要在chrome按装这个插件
     这个功能挺有意思，保存后自动就帮刷新了，省去一个操作维度，可以对开发效率的提升
 
 #### 约定14
 
-> 一键式发布ftp  测试服务器 & 一键式发布ftp 预发服务器 & 一键式发布ftp  静态服务器
+> 一键式发布测试服务器 & 一键式发布静态服务器
 
     常规方式是打开ftp客户端,前端需要找本地代码的位置和服务器代码的位置在提交，主要是在联调和改bug阶段，频繁修改提交
     用约定好的路径一键式提交会大大减少操作维度，而且不容易出错 
@@ -256,7 +257,13 @@ by 小洪 qihongbin@163.com
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/dtree.jpg"  />
 
+## chome插件收集
 
+    PerfectPixel by WellDoneCode
+    LiveReload
+    Page Ruler
+    Postman
+    jsonview
 
 ## 待续
 
