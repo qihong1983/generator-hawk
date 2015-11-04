@@ -14,9 +14,29 @@ by 小洪 qihongbin@163.com
 
 > npm install -g yo generator-hawk
 
-### 功能介绍
 
-> 按需合并
+### 视频演示
+
+[![asciicast](https://asciinema.org/a/eoxuv1oo14f9cwcmxvgu3pxnu.png)](https://asciinema.org/a/eoxuv1oo14f9cwcmxvgu3pxnu)
+
+### 自动化17点约定
+
+#### 约定1
+
+> url引用方式
+
+    规范
+        http://xxx.cdn.cn/项目组/项目/项目迭代版本/页面/页面.(js|css)
+    
+    开发环境、测试环境、生产环境访问路径统一
+
+        开发环境： http://xxx.cdn.cn/group/project/0.1.0/mods/mod1.js
+        测试环境： http://xxx.cdn.cn/group/project/0.1.0/mods/mod1.js
+        生产环境： http://xxx.cdn.cn/group/project/0.1.0/mods/mod1.js
+
+#### 按需合并
+
+
 
 > 压缩js和css
 
