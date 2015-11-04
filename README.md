@@ -76,12 +76,41 @@ by 小洪 qihongbin@163.com
     可以将图片转换成文本处理，来提高访问性能。不支持ie6、ie7。
     ie8合成的图片不能超过32k，否则不转换
 
-#### 按需合并
+#### 约定
 
-    
+> 页面模块化方案
+
+     代码演示
+
+```html
+@@include('../../mods/mod1/mod1.html')
+
+```
+
+
+> 如图
+
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/includehtml.jpg"  />
+
+
+
+#### 约定
+
+> 按需合并
+
+    将每个页面所需要的模块css和js合并成一个请求不需要的不合到一起
+    比如 home.html、list.html 两个页面的js静态资源
+    home.html用到了a.js,b.js --> home.html不会包含不用的c.js和d.js
+    list.html用到了c.js,d.js --> list.html不会包含不用的a.js和b.js
+    这个后期可以在继续优化
+    优化推荐(暂未实现)
+        1、home.html用到了a.js,b.js,c.js --> a.js和c.js一个请求，而另一个请求是b.js
+        2、list.html用到了b.js,d.js -- > 在从home.html跳转到list.html b.js就会从浏览器缓存中加载。
+           而d.js从服务器上加载
+
 
 > 一键式启动 （支持 http combo 本地服务）
-
+    
     
 
 > ctrl + s 保存并刷新网页
@@ -99,7 +128,7 @@ by 小洪 qihongbin@163.com
 
 > 通用组件包管理
 
-> 页面模块化方案
+
 
 
 
