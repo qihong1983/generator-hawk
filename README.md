@@ -80,20 +80,26 @@ by 小洪 qihongbin@163.com
 
 > 页面模块化方案
 
-     代码演示
+    一个页面由N个模块成
+    模块内的功能可以N个组件组成
 
-```html
-@@include('../../mods/mod1/mod1.html')
+    每个页面有自己的css和自己的js
+    每个模块有自己的css天自己的js --- 每个模块可以独立访问（限本地环境和测试环境）
 
-```
+    好处是页面内不相关的区块进行解耦，代码逻辑不混淆，方便多人并行开发同一个页面，也方便后期局部改版或替换
 
+    <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/includehtml.jpg"  />
 
-> 如图
+#### 约定
 
-<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/includehtml.jpg"  />
+> md5戳
 
+    这种实践方式是好处有两点：
+        1、上线后能够有效的清除用户浏览器缓存，使用户一直访问最新的页面
+        2、避免同名文件被覆盖，在项目版本迭代上线过程中不会出现老代码和新代码的不统一导制用户短时间访问出现问题
 
-
+    这个方式一般是先上前端代码在上后端代码实现切到线上的过程
+    
 #### 约定
 
 > 按需合并
@@ -124,7 +130,7 @@ by 小洪 qihongbin@163.com
 
 > 线上调试 
 
-> md5戳
+
 
 > 通用组件包管理
 
