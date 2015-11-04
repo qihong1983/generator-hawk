@@ -1,9 +1,7 @@
-# web前端集成自动化构建方案Hawk
+# 前端集成自动化项目构建方案Hawk
 
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
-
-
 
 
 by 小洪 qihongbin@163.com
@@ -60,7 +58,6 @@ by 小洪 qihongbin@163.com
 > vi /etc/gitconfig
 
 ```shell
-
 [gui]
 
 encoding = utf-8 #代码库统一用urf-8,在git gui中可以正常显示中文
@@ -297,15 +294,6 @@ define(function (require, exports, module) {
 
 > 具体baidu搜索charles使用教程
 
-## 可扩展的
-
-> * less&scss、
-> *	js&css语法检测、
-> *	coffeescript、
-> *	h5构建方案、
-> *	单页应用构建方案、
-> *	离线构建方案
-> *	通用组件包的选择
 
 
 ## http combo功能介绍
@@ -321,3 +309,10 @@ http://xxx.cdn.cn:8801/a/group/project/0.1.0/??pages/page1/page1.js,pages/page2/
 ```
 
 > cdn nginx的配置 (https://github.com/alibaba/nginx-http-concat)
+
+
+
+
+
+
+

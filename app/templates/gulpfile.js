@@ -12,6 +12,7 @@ var gulp          = require("gulp"),
     hawkRename  = require('gulp-hawk-rename'),
     uglify =      require('gulp-uglify'),
     minifyCss   = require('gulp-minify-css');
+
 var fs = require('fs');
 var chalk = require('chalk');
 
@@ -30,7 +31,8 @@ var base64 = require('gulp-base64');
 var prompt = require('gulp-prompt');
 var gulpif = require('gulp-if');
 var gutil = require('gulp-util');
-var ftp = require("gulp-iftp");
+//var ftp = require("gulp-iftp");   //这个是普通ftp
+var ftp = require("gulp-sftp");
 var livereload = require('gulp-livereload');
 //var ftp = require('gulp-ftp');
 //一键上传
@@ -65,12 +67,18 @@ var onlineftp=fs.existsSync('/ftpinfo.json');
 
 
 var onlineftpcon = {};
+
+
 if (onlineftp) {
 
 //  console.log(fs.readFileSync('/ftpinfo.json', 'utf-8'));
 
 var tmp = fs.readFileSync('/ftpinfo.json','utf-8');
   onlineftpcon = JSON.parse(tmp);
+
+
+
+
   
   onlineftp = false;
 } else {
@@ -112,26 +120,38 @@ var tmpqa = fs.readFileSync('/ftpqainfo.json','utf-8');
 
 gulp.task('publishqa', ['onlineifqa'], function () {
    // gulp.start('cleanhtml');
-     return gulp.src(["./build/config.js",'!./build/**/*.html'])
+    //gulp-iftp 写法
+     // return gulp.src(["./build/config.js",'!./build/**/*.html'])
+     //    .pipe(ftp({
+     //      host:qaftpcon.host,
+     //      port:qaftpcon.port,
+     //      user:qaftpcon.user,
+     //      pass:qaftpcon.passwd,
+     //      logger:'files.txt',
+     //      froot:"@.@",
+     //      remote:abc.ftp_qa_root + abc.mock_online_address
+     //    }))
+
+     //gulp-sftp写法
+     return gulp.src(["./build/**/*",'./build/**/*.html'])
         .pipe(ftp({
           host:qaftpcon.host,
           port:qaftpcon.port,
           user:qaftpcon.user,
           pass:qaftpcon.passwd,
-          logger:'files.txt',
-          froot:"@.@",
-          remote:abc.ftp_qa_root + abc.mock_online_address
+          remotePath:abc.ftp_qa_root + abc.mock_online_address
         }))
+
 });
 
 gulp.task('msg',function () {
   return gulp.src('./build')
-    .pipe(notify({ message : chalk.bgRed(chalk.white('访问地址==>http://'+abc.online_host+abc.mock_online_address+'页面名称/页面名称.js|.css'))}));
+    .pipe(notify({ message : chalk.bgRed(chalk.white('把本地hosts-->'+abc.local_host+'注释掉或删掉>>访问==>http://'+abc.local_host+abc.mock_online_address+'页面名称/页面名称.js|.css'))}));
 });
 
 gulp.task('msgqa',function () {
   return gulp.src('./build')
-    .pipe(notify({ message : chalk.bgRed(chalk.white('访问地址==>http://'+abc.qa_host+':'+abc.qa_port+abc.mock_online_address+'页面名称/页面名称.js|.css'))}));
+    .pipe(notify({ message : chalk.bgRed(chalk.white('把把本地hosts-->'+abc.qa_host+'指向测试环境的IP>>访问==>http://'+abc.qa_host+abc.mock_online_address+'页面名称/页面名称.js|.css'))}));
 });
 
 gulp.task('importantqa',function () {
@@ -218,16 +238,29 @@ gulp.task('onlineifqa', function() {
  // remote:abc.ftp_online_root + abc.mock_online_address,
 gulp.task('publish', ['onlineif'], function () {
    // gulp.start('cleanhtml');
-     return gulp.src(["./build/config.js",'!./build/**/*.html'])
+
+     // return gulp.src(["./build/config.js",'!./build/**/*.html'])
+     //    .pipe(ftp({
+     //      host:onlineftpcon.host,
+     //      port:onlineftpcon.port,
+     //      user:onlineftpcon.user,
+     //      pass:onlineftpcon.passwd,
+     //      logger:'files.txt',
+     //      froot:"@.@",
+     //      remote:abc.ftp_online_root + abc.mock_online_address
+     //    }))
+
+    console.log(onlineftpcon);
+     return gulp.src(["./build/**/*",'!./build/**/*.html'])
         .pipe(ftp({
           host:onlineftpcon.host,
           port:onlineftpcon.port,
           user:onlineftpcon.user,
           pass:onlineftpcon.passwd,
-          logger:'files.txt',
-          froot:"@.@",
-          remote:abc.ftp_online_root + abc.mock_online_address
+          remotePath:abc.ftp_online_root + abc.mock_online_address
         }))
+
+
 });
 
 //console.log(ftp);
@@ -258,10 +291,11 @@ gulp.task('onlineif', function() {
   },{
       type: 'password',
       name: 'passwd',
-      message: '密码?'
+       message: '密码?'
   }], function(res){
       //value is in res.task (the name option gives the key)
       var ifa = (/^y/i).test(res.initFtpAddress);
+
       if (ifa) {
          onlineftpcon = res; 
          fs.writeFileSync('/ftpinfo.json', JSON.stringify(res), 'utf-8');
@@ -507,7 +541,7 @@ gulp.task('qainclude',['js','css'], function() {
     }))
     .pipe(hawkjs(true))
     .pipe(hawkcss())
-    .pipe(hawkRename({"changeName":abc.qa_host+':'+abc.qa_port}))
+    .pipe(hawkRename({"changeName":abc.qa_host}))
     //.pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./build'));
    
@@ -624,8 +658,8 @@ gulp.task("dev",["include",'css','hawksprite','images'], function () {
  console.log('\n');
  var mock_online_address_temp = mock_online_address.substr(1,mock_online_address.length);
  console.log(
-    chalk.blue("服务器开始运行 ")+chalk.cyan('复制根目录地址访问：')+chalk.bgRed("http://"+local_host+":"+local_port+mock_online_address)+'\n'+  
-    chalk.blue('combo功能示例^_^：') + chalk.bgRed("http://"+local_host+":"+local_port + '/'+ mock_online_address_temp+'??' + 'pages/page1/page1.js,'+'pages/page2/page2.js')+'\n'+
+    chalk.blue("服务器开始运行 ")+chalk.cyan('复制根目录地址访问：')+chalk.bgRed("http://"+local_host+mock_online_address)+'\n'+  
+    chalk.blue('combo功能示例^_^：') + chalk.bgRed("http://"+local_host+'/'+ mock_online_address_temp+'??' + 'pages/page1/page1.js,'+'pages/page2/page2.js')+'\n'+
     chalk.blue('关闭按：')+chalk.green('ctrl+c\n')+
     chalk.blue('配置文件在根目录：')+chalk.green('abc.json')+'\n\n'
  );
@@ -653,8 +687,8 @@ gulp.task("dev64",["include",'css','sprite64','images'], function () {
  var mock_online_address_temp = mock_online_address.substr(1,mock_online_address.length);
  console.log(
 
-    chalk.blue("服务器开始运行 ")+chalk.cyan('复制根目录地址访问：')+chalk.bgRed("http://"+local_host+":"+local_port+mock_online_address)+'\n'+  
-    chalk.blue('combo功能示例^_^：') + chalk.bgRed("http://"+local_host+":"+local_port + '/'+ mock_online_address_temp+'??' + 'pages/page1/page1.js,'+'pages/page2/page2.js')+'\n'+
+    chalk.blue("服务器开始运行 ")+chalk.cyan('复制根目录地址访问：')+chalk.bgRed("http://"+local_host+mock_online_address)+'\n'+  
+    chalk.blue('combo功能示例^_^：') + chalk.bgRed("http://"+local_host+ '/'+ mock_online_address_temp+'??' + 'pages/page1/page1.js,'+'pages/page2/page2.js')+'\n'+
     chalk.blue('关闭按：')+chalk.green('ctrl+c\n')+
     chalk.blue('配置文件在根目录：')+chalk.green('abc.json')+'\n'+
     chalk.blue('abc.json配置文件：\n')

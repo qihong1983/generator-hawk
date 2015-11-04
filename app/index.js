@@ -75,7 +75,7 @@ var defaultGreeting =
 
     this.log(defaultGreeting);
 
-    this.copy('src/config.js','../../../src/config.js');
+    //this.copy('src/config.js','../../../src/config.js');
    
 
 /*
@@ -97,6 +97,10 @@ var defaultGreeting =
       message: '项目版本',
       default:'0.1.0' 
     },{
+      name: 'group',
+      message: '项目组',
+      default: 'group'
+    },{
       name: 'author',
       message: '开发者',
       default:'hawk' 
@@ -108,27 +112,23 @@ var defaultGreeting =
       name: 'mock_online_address',
       message: '模拟路径(建议不要用默认的, 注意==>两边要有协杠)',
       default:'/assets/group/project/0.1.0/'
-    }*/{
-      name: 'group',
-      message: '项目组',
-      default: 'group'
-    },{
+    }{
       name: 'project',
       message: '项目',
       default: 'project'
-    },{
+    },*/{
       name: 'online_host',
-      message: '线上域名(建议不要用默认的)',
-      default:'online.cdn.cn'
-    },{
+      message: '备用域名host(建议不要用默认的)',
+      default:'xxx1.cdn.cn'
+    },/*{
       name: 'online_post',
       message: '线上端口(建议用默认的)',
       default:'80'
-    },{
+    },*/{
       name: 'local_host',
-      message: '本地域名(建议不要用默认的,需要绑hosts)',
+      message: '访问域名host(建议不要用默认的,需要绑hosts)',
       default:'xxx.cdn.cn'
-    },{
+    },/*{
       name: 'local_port',
       message: '本地端口(建议不要用默认的)',
       default:'80'
@@ -140,7 +140,7 @@ var defaultGreeting =
       name: 'qa_port',
       message: '测试域名(建议不要用默认的)',
       default:'8000'
-    },{
+    },*/{
       name: 'ftp_online_root',
       message: chalk.cyan('线上ftp根目录到站点根目录')+chalk.bgRed('(建议不要用默认的,末尾不要用/。如果是根目录直接打/)'),
       default:'/var/www/html'
@@ -174,7 +174,7 @@ this.npm_install = (/^y/i).test(props.npm_install);
       this.email = props.email;
       //this.mock_online_address = props.mock_online_address;
 
-      this.mock_online_address = '/a/'+props.group+'/'+props.project+'/' + props.version + '/';
+      this.mock_online_address = '/a/'+props.group+'/'+props.name+'/' + props.version + '/';
       this.online_host = props.online_host;
       this.online_port = props.online_port;
       this.local_host = props.local_host;
