@@ -19,7 +19,7 @@ by 小洪 qihongbin@163.com
 
 [![asciicast](https://asciinema.org/a/eoxuv1oo14f9cwcmxvgu3pxnu.png)](https://asciinema.org/a/eoxuv1oo14f9cwcmxvgu3pxnu)
 
-### 自动化17点约定
+### 自动化构建17点约定
 
 #### 约定1
 
@@ -28,23 +28,38 @@ by 小洪 qihongbin@163.com
     规范
         http://xxx.cdn.cn/项目组/项目/项目迭代版本/页面/页面.(js|css)
     
-    开发环境、测试环境、生产环境访问路径统一
+    开发环境、测试环境、生产环境访问路径统一。三个环境不容易混乱
 
         开发环境： http://xxx.cdn.cn/group/project/0.1.0/mods/mod1.js
         测试环境： http://xxx.cdn.cn/group/project/0.1.0/mods/mod1.js
         生产环境： http://xxx.cdn.cn/group/project/0.1.0/mods/mod1.js
 
+
+
+#### 约定2
+> 自动压缩js和css上线
+
+    这个就不细说了，目前大多数项目上线都会把代码压缩。降底文件大小，增加方问速度
+
+#### 约定3 
+
+> 自动图片压缩
+
+    前端切出来的图片在保存png图片不一定是最有利于网络传输的图片。而要手动压缩图片大小会占用很多不必要的工作量影响开发效率
+
+
+#### 合成雪碧图
 #### 按需合并
 
 
 
-> 压缩js和css
 
-> 图片压缩
+
+
 
 > 一键式启动 （http combo 本地服务）
 
-> 合成雪碧图
+
 
 > 图片转base64编码
 
