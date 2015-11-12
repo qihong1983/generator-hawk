@@ -1,5 +1,14 @@
 # 前端集成自动化项目构建方案Hawk
 
+```python
+@requires_authorization
+class SomeClass:
+    pass
+
+if __name__ == '__main__':
+    # A comment
+    print 'hello world'
+```
 
 <img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/logo.png"  />
 
