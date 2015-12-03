@@ -85,7 +85,7 @@ by 小洪 qihongbin@163.com
 
     好处是页面内不相关的区块进行解耦，代码逻辑不混淆，方便多人并行开发同一个页面，也方便后期局部改版或替换
 
-<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/includehtml.jpg"  />
+<img src="https://raw.githubusercontent.com/qihong1983/generator-hawk/master/app/pagemodshow.png"  />
 
 #### 约定9
 
